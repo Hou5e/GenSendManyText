@@ -38,6 +38,7 @@ Partial Class FormMain
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.lblConstantAmtNote = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.btnReGen = New System.Windows.Forms.Button()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
@@ -52,6 +53,7 @@ Partial Class FormMain
         Me.txtAddrList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.txtAddrList.Font = New System.Drawing.Font("Lucida Console", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtAddrList.Location = New System.Drawing.Point(0, 0)
+        Me.txtAddrList.MaxLength = 0
         Me.txtAddrList.Multiline = True
         Me.txtAddrList.Name = "txtAddrList"
         Me.txtAddrList.ScrollBars = System.Windows.Forms.ScrollBars.Both
@@ -62,6 +64,7 @@ Partial Class FormMain
         '
         Me.txtOutput.Dock = System.Windows.Forms.DockStyle.Fill
         Me.txtOutput.Location = New System.Drawing.Point(0, 0)
+        Me.txtOutput.MaxLength = 0
         Me.txtOutput.Multiline = True
         Me.txtOutput.Name = "txtOutput"
         Me.txtOutput.ScrollBars = System.Windows.Forms.ScrollBars.Both
@@ -178,7 +181,7 @@ Partial Class FormMain
         'chk6DecimalPlaces
         '
         Me.chk6DecimalPlaces.AutoSize = True
-        Me.chk6DecimalPlaces.Location = New System.Drawing.Point(415, 5)
+        Me.chk6DecimalPlaces.Location = New System.Drawing.Point(438, 6)
         Me.chk6DecimalPlaces.Name = "chk6DecimalPlaces"
         Me.chk6DecimalPlaces.Size = New System.Drawing.Size(15, 14)
         Me.chk6DecimalPlaces.TabIndex = 7
@@ -214,11 +217,28 @@ Partial Class FormMain
         Me.Panel3.Size = New System.Drawing.Size(417, 28)
         Me.Panel3.TabIndex = 9
         '
+        'btnReGen
+        '
+        Me.btnReGen.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnReGen.BackColor = System.Drawing.Color.Transparent
+        Me.btnReGen.FlatAppearance.BorderSize = 0
+        Me.btnReGen.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        Me.btnReGen.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.btnReGen.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnReGen.Location = New System.Drawing.Point(397, 1)
+        Me.btnReGen.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnReGen.Name = "btnReGen"
+        Me.btnReGen.Size = New System.Drawing.Size(21, 20)
+        Me.btnReGen.TabIndex = 10
+        Me.btnReGen.Text = "R"
+        Me.btnReGen.UseVisualStyleBackColor = False
+        '
         'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(711, 482)
+        Me.Controls.Add(Me.btnReGen)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.chk6DecimalPlaces)
@@ -263,4 +283,5 @@ Partial Class FormMain
     Friend WithEvents Panel2 As Panel
     Friend WithEvents lblConstantAmtNote As Label
     Friend WithEvents Panel3 As Panel
+    Friend WithEvents btnReGen As Button
 End Class

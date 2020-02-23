@@ -16,11 +16,17 @@
     Private Sub FormMain_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.Icon = My.Resources.AirDrop_16_32_48_256
         Me.Text = Prog_Name & " v" & My.Application.Info.Version.Major
+
+        Me.btnReGen.Text = ""
+        Me.btnReGen.Image = My.Resources.Reload_16.ToBitmap
+
         Me.SplitContainer1.SplitterWidth = 2
         'Update the control's text
         Me.chk6DecimalPlaces.Checked = True
     End Sub
+#End Region
 
+#Region "Control Events"
     Private Sub txtAddrList_TextChanged(sender As Object, e As EventArgs) Handles txtAddrList.TextChanged
         GenerateText()
     End Sub
@@ -33,9 +39,37 @@
         GenerateText()
     End Sub
 
+    Private Sub btnReGen_Click(sender As Object, e As EventArgs) Handles btnReGen.Click
+        GenerateText()
+    End Sub
+
     Private Sub chk6DecimalPlaces_CheckedChanged(sender As Object, e As EventArgs) Handles chk6DecimalPlaces.CheckedChanged
         Me.chk6DecimalPlaces.Text = If(Me.chk6DecimalPlaces.Checked = True, "6", "8") & " Decimal Places"
         GenerateText()
+    End Sub
+#End Region
+
+#Region "Keystroke Events"
+    Private Sub txtAddrList_KeyDown(sender As Object, e As KeyEventArgs) Handles txtAddrList.KeyDown
+        If e.Modifiers = Keys.Control Then
+            Select Case e.KeyCode
+                Case Keys.A
+                    'CTRL+A select all text
+                    Me.txtAddrList.SelectAll()
+                    e.SuppressKeyPress = True
+            End Select
+        End If
+    End Sub
+
+    Private Sub txtOutput_KeyDown(sender As Object, e As KeyEventArgs) Handles txtOutput.KeyDown
+        If e.Modifiers = Keys.Control Then
+            Select Case e.KeyCode
+                Case Keys.A
+                    'CTRL+A select all text
+                    Me.txtOutput.SelectAll()
+                    e.SuppressKeyPress = True
+            End Select
+        End If
     End Sub
 #End Region
 
@@ -82,7 +116,7 @@
                                 '6 Decimal places
                                 For i = 0 To m_iEnd
                                     m_dRndAmt = FixDbl6((m_rNum.NextDouble * (m_dMax - m_dMin)) + m_dMin)
-
+                                    'Add the new amount to the total
                                     m_dTotalAmt += m_dRndAmt
 
                                     'Trim out any extra spaces or commas from the address list while building the text string. Add the trailing comma for all entries except the last
@@ -92,7 +126,7 @@
                                 '8 Decimal places
                                 For i = 0 To m_iEnd
                                     m_dRndAmt = FixDbl8((m_rNum.NextDouble * (m_dMax - m_dMin)) + m_dMin)
-
+                                    'Add the new amount to the total
                                     m_dTotalAmt += m_dRndAmt
 
                                     'Trim out any extra spaces or commas from the address list while building the text string. Add the trailing comma for all entries except the last
