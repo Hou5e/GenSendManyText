@@ -13,5 +13,5 @@
 <Assembly: System.Runtime.InteropServices.Guid("8dc54f78-3f4f-4716-a1af-c00590805ed2")>
 
 'Version information for an assembly consists of the following four values: <Major Version>.<Minor Version>.<Build Number>.<Revision>
-<Assembly: System.Reflection.AssemblyVersion("2.0.0.0")>
-<Assembly: System.Reflection.AssemblyFileVersion("2.0.0.0")>
+<Assembly: System.Reflection.AssemblyVersion("3.0.0.0")>
+<Assembly: System.Reflection.AssemblyFileVersion("3.0.0.0")>

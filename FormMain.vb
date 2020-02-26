@@ -9,11 +9,9 @@
     Private m_dTotalAmt As Double = 0.0
     Private m_dMin As Double = 0.0
     Private m_dMax As Double = 0.0
-    Private Const NUM6 As String = "0.000000"
-    Private Const NUM8 As String = "0.00000000"
 
 #Region "Form Events"
-    Private Sub FormMain_Load(sender As Object, e As EventArgs) Handles Me.Load
+    Private Sub FormMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Icon = My.Resources.AirDrop_16_32_48_256
         Me.Text = Prog_Name & " v" & My.Application.Info.Version.Major
 
@@ -21,8 +19,6 @@
         Me.btnReGen.Image = My.Resources.Reload_16.ToBitmap
 
         Me.SplitContainer1.SplitterWidth = 2
-        'Update the control's text
-        Me.chk6DecimalPlaces.Checked = True
     End Sub
 #End Region
 
@@ -43,9 +39,18 @@
         GenerateText()
     End Sub
 
-    Private Sub chk6DecimalPlaces_CheckedChanged(sender As Object, e As EventArgs) Handles chk6DecimalPlaces.CheckedChanged
-        Me.chk6DecimalPlaces.Text = If(Me.chk6DecimalPlaces.Checked = True, "6", "8") & " Decimal Places"
+    Private Sub cboDecimalPlaces_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboDecimalPlaces.SelectedIndexChanged
         GenerateText()
+    End Sub
+
+    Private Sub cboDecimalPlaces_TextChanged(sender As Object, e As EventArgs) Handles cboDecimalPlaces.TextChanged
+        Select Case Me.cboDecimalPlaces.Text
+            Case "0", "1", "2", "4", "6", "8"
+                'Good
+            Case Else
+                'Correct any other text
+                Me.cboDecimalPlaces.Text = "6"
+        End Select
     End Sub
 #End Region
 
@@ -74,18 +79,27 @@
 #End Region
 
 #Region "Helper Functions"
-    Private Function FixStr6(ByRef val As Double) As String
-        Return val.ToString(NUM6, Globalization.CultureInfo.InvariantCulture)
-    End Function
-    Private Function FixStr8(ByRef val As Double) As String
-        Return val.ToString(NUM8, Globalization.CultureInfo.InvariantCulture)
+    Private Function FixStr(ByRef val As Double) As String
+        Select Case Me.cboDecimalPlaces.Text
+            Case "0"
+                Return val.ToString("0", Globalization.CultureInfo.InvariantCulture)
+            Case "1"
+                Return val.ToString("0.0", Globalization.CultureInfo.InvariantCulture)
+            Case "2"
+                Return val.ToString("0.00", Globalization.CultureInfo.InvariantCulture)
+            Case "4"
+                Return val.ToString("0.0000", Globalization.CultureInfo.InvariantCulture)
+            Case "6"
+                Return val.ToString("0.000000", Globalization.CultureInfo.InvariantCulture)
+            Case "8"
+                Return val.ToString("0.00000000", Globalization.CultureInfo.InvariantCulture)
+            Case Else
+                Return val.ToString("0.000000", Globalization.CultureInfo.InvariantCulture)
+        End Select
     End Function
 
-    Private Function FixDbl6(val As Double) As Double
-        Return Math.Round(val, 6, MidpointRounding.AwayFromZero)
-    End Function
-    Private Function FixDbl8(val As Double) As Double
-        Return Math.Round(val, 8, MidpointRounding.AwayFromZero)
+    Private Function FixDbl(val As Double) As Double
+        Return Math.Round(val, CInt(Me.cboDecimalPlaces.Text), MidpointRounding.AwayFromZero)
     End Function
 #End Region
 
@@ -93,6 +107,7 @@
     Private Sub GenerateText()
         'Reset for new output text
         m_sbMsg.Length = 0
+        m_iEnd = 0
         m_dRndAmt = 0.0
         m_dTotalAmt = 0.0
         m_dMin = 0.0
@@ -112,28 +127,16 @@
 
                             'Build the output text
                             m_sbMsg.Append("sendmany """" ""{")
-                            If Me.chk6DecimalPlaces.Checked = True Then
-                                '6 Decimal places
-                                For i = 0 To m_iEnd
-                                    m_dRndAmt = FixDbl6((m_rNum.NextDouble * (m_dMax - m_dMin)) + m_dMin)
-                                    'Add the new amount to the total
-                                    m_dTotalAmt += m_dRndAmt
+                            For i = 0 To m_iEnd
+                                m_dRndAmt = FixDbl((m_rNum.NextDouble * (m_dMax - m_dMin)) + m_dMin)
+                                'Add the new amount to the total
+                                m_dTotalAmt += m_dRndAmt
 
-                                    'Trim out any extra spaces or commas from the address list while building the text string. Add the trailing comma for all entries except the last
-                                    m_sbMsg.Append("\""" & strAddr(i).Trim(","c, ";"c, " "c) & "\"":" & FixStr6(m_dRndAmt) & If(i = m_iEnd, "", ","))
-                                Next
-                            Else
-                                '8 Decimal places
-                                For i = 0 To m_iEnd
-                                    m_dRndAmt = FixDbl8((m_rNum.NextDouble * (m_dMax - m_dMin)) + m_dMin)
-                                    'Add the new amount to the total
-                                    m_dTotalAmt += m_dRndAmt
-
-                                    'Trim out any extra spaces or commas from the address list while building the text string. Add the trailing comma for all entries except the last
-                                    m_sbMsg.Append("\""" & strAddr(i).Trim(","c, ";"c, " "c) & "\"":" & FixStr8(m_dRndAmt) & If(i = m_iEnd, "", ","))
-                                Next
-                            End If
+                                'Trim out any extra spaces or commas from the address list while building the text string. Add the trailing comma for all entries except the last
+                                m_sbMsg.Append("\""" & strAddr(i).Trim(","c, ";"c, " "c) & "\"":" & FixStr(m_dRndAmt) & If(i = m_iEnd, "", ","))
+                            Next
                             m_sbMsg.Append("}""")
+
                             'Display the output text
                             Me.txtOutput.Text = m_sbMsg.ToString
                         Else
@@ -158,12 +161,10 @@
             Me.txtOutput.Text = ex.ToString
         End Try
 
-        'Display the total Amount
-        If Me.chk6DecimalPlaces.Checked = True Then
-            Me.txtTotalAmt.Text = FixStr6(m_dTotalAmt)
-        Else
-            Me.txtTotalAmt.Text = FixStr8(m_dTotalAmt)
-        End If
+        'Display the Total Amount
+        Me.txtTotalAmt.Text = FixStr(m_dTotalAmt)
+        'Display the address count 
+        Me.lblAddressList.Text = "Address List" & If(m_iEnd = 0, "", " (" & (m_iEnd + 1).ToString & ")") & ":"
     End Sub
 #End Region
 End Class

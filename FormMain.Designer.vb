@@ -34,11 +34,12 @@ Partial Class FormMain
         Me.txtTotalAmt = New System.Windows.Forms.TextBox()
         Me.lblTotalAmt = New System.Windows.Forms.Label()
         Me.lblExample = New System.Windows.Forms.Label()
-        Me.chk6DecimalPlaces = New System.Windows.Forms.CheckBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.lblConstantAmtNote = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.btnReGen = New System.Windows.Forms.Button()
+        Me.cboDecimalPlaces = New System.Windows.Forms.ComboBox()
+        Me.lblDecimalPlaces = New System.Windows.Forms.Label()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
@@ -100,7 +101,7 @@ Partial Class FormMain
         Me.lblAddressList.Location = New System.Drawing.Point(12, 21)
         Me.lblAddressList.Name = "lblAddressList"
         Me.lblAddressList.Size = New System.Drawing.Size(67, 13)
-        Me.lblAddressList.TabIndex = 6
+        Me.lblAddressList.TabIndex = 7
         Me.lblAddressList.Text = "Address List:"
         '
         'txtAmtMin
@@ -108,7 +109,7 @@ Partial Class FormMain
         Me.txtAmtMin.Location = New System.Drawing.Point(202, 2)
         Me.txtAmtMin.Name = "txtAmtMin"
         Me.txtAmtMin.Size = New System.Drawing.Size(69, 20)
-        Me.txtAmtMin.TabIndex = 3
+        Me.txtAmtMin.TabIndex = 2
         Me.txtAmtMin.Text = "5"
         Me.txtAmtMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -117,7 +118,7 @@ Partial Class FormMain
         Me.txtAmtMax.Location = New System.Drawing.Point(324, 2)
         Me.txtAmtMax.Name = "txtAmtMax"
         Me.txtAmtMax.Size = New System.Drawing.Size(69, 20)
-        Me.txtAmtMax.TabIndex = 5
+        Me.txtAmtMax.TabIndex = 4
         Me.txtAmtMax.Text = "50"
         Me.txtAmtMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -127,7 +128,7 @@ Partial Class FormMain
         Me.lblAmtMin.Location = New System.Drawing.Point(97, 5)
         Me.lblAmtMin.Name = "lblAmtMin"
         Me.lblAmtMin.Size = New System.Drawing.Size(107, 13)
-        Me.lblAmtMin.TabIndex = 2
+        Me.lblAmtMin.TabIndex = 1
         Me.lblAmtMin.Text = "Amount Range,  Min:"
         '
         'lblAmtMax
@@ -136,7 +137,7 @@ Partial Class FormMain
         Me.lblAmtMax.Location = New System.Drawing.Point(280, 5)
         Me.lblAmtMax.Name = "lblAmtMax"
         Me.lblAmtMax.Size = New System.Drawing.Size(46, 13)
-        Me.lblAmtMax.TabIndex = 4
+        Me.lblAmtMax.TabIndex = 3
         Me.lblAmtMax.Text = "To Max:"
         '
         'Panel1
@@ -149,7 +150,7 @@ Partial Class FormMain
         Me.Panel1.Location = New System.Drawing.Point(28, 449)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(198, 24)
-        Me.Panel1.TabIndex = 1
+        Me.Panel1.TabIndex = 0
         '
         'txtTotalAmt
         '
@@ -177,15 +178,6 @@ Partial Class FormMain
         Me.lblExample.TabIndex = 0
         Me.lblExample.Text = "Note: CureCoin uses 6 decimal places" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Command Info: sendmany <fromaccount> {addre" &
     "ss:amount, ...} [minconf=1] [comment]"
-        '
-        'chk6DecimalPlaces
-        '
-        Me.chk6DecimalPlaces.AutoSize = True
-        Me.chk6DecimalPlaces.Location = New System.Drawing.Point(438, 6)
-        Me.chk6DecimalPlaces.Name = "chk6DecimalPlaces"
-        Me.chk6DecimalPlaces.Size = New System.Drawing.Size(15, 14)
-        Me.chk6DecimalPlaces.TabIndex = 7
-        Me.chk6DecimalPlaces.UseVisualStyleBackColor = True
         '
         'Panel2
         '
@@ -219,7 +211,6 @@ Partial Class FormMain
         '
         'btnReGen
         '
-        Me.btnReGen.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnReGen.BackColor = System.Drawing.Color.Transparent
         Me.btnReGen.FlatAppearance.BorderSize = 0
         Me.btnReGen.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption
@@ -229,19 +220,38 @@ Partial Class FormMain
         Me.btnReGen.Margin = New System.Windows.Forms.Padding(4)
         Me.btnReGen.Name = "btnReGen"
         Me.btnReGen.Size = New System.Drawing.Size(21, 20)
-        Me.btnReGen.TabIndex = 10
+        Me.btnReGen.TabIndex = 5
         Me.btnReGen.Text = "R"
         Me.btnReGen.UseVisualStyleBackColor = False
+        '
+        'cboDecimalPlaces
+        '
+        Me.cboDecimalPlaces.FormattingEnabled = True
+        Me.cboDecimalPlaces.Items.AddRange(New Object() {"0", "1", "2", "4", "6", "8"})
+        Me.cboDecimalPlaces.Location = New System.Drawing.Point(429, 2)
+        Me.cboDecimalPlaces.Name = "cboDecimalPlaces"
+        Me.cboDecimalPlaces.Size = New System.Drawing.Size(32, 21)
+        Me.cboDecimalPlaces.TabIndex = 12
+        Me.cboDecimalPlaces.Text = "6"
+        '
+        'lblDecimalPlaces
+        '
+        Me.lblDecimalPlaces.AutoSize = True
+        Me.lblDecimalPlaces.Location = New System.Drawing.Point(462, 6)
+        Me.lblDecimalPlaces.Name = "lblDecimalPlaces"
+        Me.lblDecimalPlaces.Size = New System.Drawing.Size(80, 13)
+        Me.lblDecimalPlaces.TabIndex = 13
+        Me.lblDecimalPlaces.Text = "Decimal Places"
         '
         'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(711, 482)
+        Me.Controls.Add(Me.cboDecimalPlaces)
         Me.Controls.Add(Me.btnReGen)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
-        Me.Controls.Add(Me.chk6DecimalPlaces)
         Me.Controls.Add(Me.txtAmtMin)
         Me.Controls.Add(Me.txtAmtMax)
         Me.Controls.Add(Me.Panel1)
@@ -249,7 +259,9 @@ Partial Class FormMain
         Me.Controls.Add(Me.lblAmtMin)
         Me.Controls.Add(Me.lblAddressList)
         Me.Controls.Add(Me.SplitContainer1)
+        Me.Controls.Add(Me.lblDecimalPlaces)
         Me.Name = "FormMain"
+        Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel1.PerformLayout()
         Me.SplitContainer1.Panel2.ResumeLayout(False)
@@ -279,9 +291,10 @@ Partial Class FormMain
     Friend WithEvents txtTotalAmt As TextBox
     Friend WithEvents lblTotalAmt As Label
     Friend WithEvents lblExample As Label
-    Friend WithEvents chk6DecimalPlaces As CheckBox
     Friend WithEvents Panel2 As Panel
     Friend WithEvents lblConstantAmtNote As Label
     Friend WithEvents Panel3 As Panel
     Friend WithEvents btnReGen As Button
+    Friend WithEvents cboDecimalPlaces As ComboBox
+    Friend WithEvents lblDecimalPlaces As Label
 End Class
