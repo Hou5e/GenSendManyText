@@ -1,6 +1,6 @@
 # Generate SendMany Text With Random Amounts
 
-![Screenshot](Screenshot.jpg)
+![Screenshot](Screenshot.png)
 
 ## Features
 - Simple SendMany command text generator for use with Bitcoin-like wallets (CureCoin) for giveaways or airdrops
@@ -8,6 +8,7 @@
 - Creates random amounts based on the specified range of values to 6 or 8 decimal places
 - Creates fixed constant amounts if the Min and Max are the same value
 - Auto-regenerates on changes or pressing the regenerate button, and displays the total amount to distribute
+- Specify a comment for the transaction
 - Supports CTRL+A to Select All text
 
 ## Releases

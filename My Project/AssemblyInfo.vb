@@ -4,7 +4,7 @@
 <Assembly: System.Reflection.AssemblyDescription("Generate SendMany Text With Random Amounts")>
 <Assembly: System.Reflection.AssemblyCompany("")>
 <Assembly: System.Reflection.AssemblyProduct("GenSendManyText")>
-<Assembly: System.Reflection.AssemblyCopyright("Unlicense, 2020")>
+<Assembly: System.Reflection.AssemblyCopyright("Unlicense, 2022")>
 <Assembly: System.Reflection.AssemblyTrademark("")>
 <Assembly: System.Resources.NeutralResourcesLanguage("en-US")>
 <Assembly: System.Runtime.InteropServices.ComVisible(False)>
@@ -13,5 +13,5 @@
 <Assembly: System.Runtime.InteropServices.Guid("8dc54f78-3f4f-4716-a1af-c00590805ed2")>
 
 'Version information for an assembly consists of the following four values: <Major Version>.<Minor Version>.<Build Number>.<Revision>
-<Assembly: System.Reflection.AssemblyVersion("3.0.0.0")>
-<Assembly: System.Reflection.AssemblyFileVersion("3.0.0.0")>
+<Assembly: System.Reflection.AssemblyVersion("4.0.0.0")>
+<Assembly: System.Reflection.AssemblyFileVersion("4.0.0.0")>

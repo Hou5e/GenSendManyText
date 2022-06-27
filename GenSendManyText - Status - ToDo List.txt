@@ -1,0 +1,37 @@
+=====================================
+GenSendManyText - Status - ToDo List:
+=====================================
+
+-----------------------------------
+Immediate Need /  Short-Term Goals:
+-----------------------------------
+
+
+
+----------------------------------------------------
+Other Ideas, Improvements, Tasks, Longer-Term Goals:
+----------------------------------------------------
+
+
+-Highlight/flag/remove duplicate addresses in the list?
+-Find text in the address list, for looking for an address?
+
+
+
+
+======================================================================================================
+Change Log - Release Notes - Tasks completed:
+======================================================================================================
+
+v4 Release (2022-06-26)
+[DONE] -Add specifying the comment text
+[DONE] -Re-generate when comment text changes
+v3 Release (2020-02-26)
+[DONE] -Added more decimal place options
+v2 Release (2020-02-23)
+[DONE] -Added a refresh/regenerate button
+[DONE] -Added CTRL+A support to Select All text
+[DONE] -Allowed more text in the text boxes
+v1 Release (2020-02-22)
+[DONE] -Creates random amounts based on the specified range of values to 6 or 8 decimal places
+[DONE] -Creates fixed constant amounts if the Min and Max are the same value

@@ -43,6 +43,10 @@
         GenerateText()
     End Sub
 
+    Private Sub txtComment_TextChanged(sender As Object, e As EventArgs) Handles txtComment.TextChanged
+        GenerateText()
+    End Sub
+
     Private Sub cboDecimalPlaces_TextChanged(sender As Object, e As EventArgs) Handles cboDecimalPlaces.TextChanged
         Select Case Me.cboDecimalPlaces.Text
             Case "0", "1", "2", "4", "6", "8"
@@ -135,7 +139,7 @@
                                 'Trim out any extra spaces or commas from the address list while building the text string. Add the trailing comma for all entries except the last
                                 m_sbMsg.Append("\""" & strAddr(i).Trim(","c, ";"c, " "c) & "\"":" & FixStr(m_dRndAmt) & If(i = m_iEnd, "", ","))
                             Next
-                            m_sbMsg.Append("}""")
+                            m_sbMsg.Append("}"" 1 """ & Me.txtComment.Text & """")
 
                             'Display the output text
                             Me.txtOutput.Text = m_sbMsg.ToString
