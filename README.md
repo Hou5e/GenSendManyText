@@ -16,6 +16,12 @@
 - **Please ask questions on the Discord Contact links below**
 - GenSendManyText is written in VB.NET, compiled with VS2015, targeting the .NET Framework v4.6.1
 
+## FAQ
+- CureCoin uses 6 decimal places, and other coins like Bitcoin use 8 decimal places
+- If you get: "Account has insufficient funds (code -6)"
+  * Check if the wallet name to use was specified, otherwise leave it blank.
+  * Check the total being used is not exceeding the wallet balance.
+
 ## License
 - GenSendManyText is public domain licensed under [The Unlicense](LICENSE "The Unlicense")
 

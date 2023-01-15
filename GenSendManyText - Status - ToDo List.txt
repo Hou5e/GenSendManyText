@@ -14,7 +14,7 @@ Other Ideas, Improvements, Tasks, Longer-Term Goals:
 
 
 -Highlight/flag/remove duplicate addresses in the list?
--Find text in the address list, for looking for an address?
+-Search for text in the address list, for finding an address?
 
 
 
@@ -22,7 +22,9 @@ Other Ideas, Improvements, Tasks, Longer-Term Goals:
 ======================================================================================================
 Change Log - Release Notes - Tasks completed:
 ======================================================================================================
-
+v5 Release (2023-01-14)
+[DONE] -Add specifying the from wallet address label
+[DONE] -Adjust program icon to look better with the Windows shortcut arrow in the lower left of it
 v4 Release (2022-06-26)
 [DONE] -Add specifying the comment text
 [DONE] -Re-generate when comment text changes

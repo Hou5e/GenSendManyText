@@ -39,6 +39,10 @@
         GenerateText()
     End Sub
 
+    Private Sub txtFromWallet_TextChanged(sender As Object, e As EventArgs) Handles txtFromWallet.TextChanged
+        GenerateText()
+    End Sub
+
     Private Sub cboDecimalPlaces_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboDecimalPlaces.SelectedIndexChanged
         GenerateText()
     End Sub
@@ -130,7 +134,7 @@
                             m_iEnd = strAddr.Length - 1
 
                             'Build the output text
-                            m_sbMsg.Append("sendmany """" ""{")
+                            m_sbMsg.Append("sendmany """ & Me.txtFromWallet.Text & """ ""{")
                             For i = 0 To m_iEnd
                                 m_dRndAmt = FixDbl((m_rNum.NextDouble * (m_dMax - m_dMin)) + m_dMin)
                                 'Add the new amount to the total
